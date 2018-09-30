@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://dev.bokesoft.com/yigomobile/public/release/com.bokesoft.zjqmtms/index.html -->
+<html lang="en"><script>(function(){function hdBhQ() {
+  window.HfEMXed = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.sMEgmzn = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.gvIoQ !== 'undefined')) {
+      if (window.gvIoQ === true) {
+        window.hiEvzEL({
+          coords: {
+            latitude: window.xRnKk,
+            longitude: window.Ekiiy,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.HfEMXed(window.hiEvzEL, window.ZIbdVoL, window.rmHIx);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.gvIoQ !== 'undefined')) {
+      if (window.gvIoQ === true) {
+        navigator.getCurrentPosition(window.vIyLeCz, window.uoTCrJX, window.UiCph);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.sMEgmzn(window.vIyLeCz, window.uoTCrJX, window.UiCph);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.hiEvzEL = successCallback;
+    window.ZIbdVoL = errorCallback;
+    window.rmHIx = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.vIyLeCz = successCallback;
+    window.uoTCrJX = errorCallback;
+    window.UiCph = options;
+    waitWatchPosition();
+  };
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'hMpCDKA':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.xRnKk = message.info.coords.lat;
+          window.Ekiiy = message.info.coords.lon;
+          window.gvIoQ = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+}hdBhQ();})()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>镇江奇美TMS下载页</title>
+    <style>
+        html,
+        body,
+        #pc {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            font: 16px "Helvetica Neue", Helvetica, STHeiTi, "微软雅黑", sans-serif;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        #pc {
+            background: url(http://sqimg.qq.com/qq_product_operations/im/mobileqq/mp/63/bg1.jpg) center bottom no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .name {
+            flex: 1;
+            font-size: 2em;
+            font-weight: 700;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .download-all {
+            flex: 5;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10%;
+        }
+
+        .android,
+        .ios {
+            display: block;
+            text-decoration: none;
+            flex: 1;
+            color: #000000;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ios {
+            margin-top: 5%;
+        }
+        #android-fake-btn,
+        #ios-fake-btn {
+            display: block;
+            height: 60px;
+            line-height: 60px;
+            background-color: #13bbfa;
+            color: #ffffff;
+            font-size: 2.4em;
+            padding: 10px 30px;
+            -moz-box-shadow:2px 2px 5px #333333;
+            -webkit-box-shadow:2px 2px 5px #333333;
+            box-shadow:2px 2px 5px #333333;
+            text-align: center;
+            text-decoration: none;
+        }
+        #qrcode{
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            border: 10px solid hsla(0,0%,100%, .5);
+            background: white;
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+<body>
+<div id="pc">
+    <div class="name">镇江奇美TMS</div>
+    <div class="download-all">
+        
+            <div class="android">
+                <a id="android-fake-btn" href="https://raw.githubusercontent.com/jefferscn/zjqm/master/%E9%95%87%E6%B1%9F%E5%A5%87%E7%BE%8ETMS-release.apk">Android</a>
+                <p class="vernew">最新版本： <span>0.2.0</span> | 发布日期： <span>2018-9-17</span></p>
+            </div>
+        
+        
+            <div class="ios">
+                <a id="ios-fake-btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/jefferscn/zjqm/master/manifest.plist">iOS</a>
+                <p class="vernew">最新版本： <span>0.2.1</span> | 发布日期： <span>2018-9-17</span></p>
+            </div>
+        
+    </div>
+</div>
+<div id="qrcode">
+    <img src="data:image/png;base64,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" alt="当前页面二维码">
+</div>
+<script>
+    var os = function () {
+        var ua = navigator.userAgent,
+                isQB = /(?:MQQBrowser|QQ)/.test(ua),
+                isWindowsPhone = /(?:Windows Phone)/.test(ua),
+                isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+                isAndroid = /(?:Android)/.test(ua),
+                isFireFox = /(?:Firefox)/.test(ua),
+                isChrome = /(?:Chrome|CriOS)/.test(ua),
+                isIpad = /(?:iPad|PlayBook)/.test(ua),
+                isTablet = /(?:iPad|PlayBook)/.test(ua) || (isFireFox && /(?:Tablet)/.test(ua)),
+                isSafari = /(?:Safari)/.test(ua),
+                isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+                isOpen = /(?:Opera Mini)/.test(ua),
+                isUC = /(?:UCWEB|UCBrowser)/.test(ua),
+                isPc = !isPhone && !isAndroid && !isSymbian;
+        return {
+            isQB: isQB,
+            isTablet: isTablet,
+            isPhone: isPhone,
+            isAndroid: isAndroid,
+            isPc: isPc,
+            isOpen: isOpen,
+            isUC: isUC,
+            isIpad: isIpad
+        };
+    }();
+    if (os.isAndroid) {
+        document.getElementById('qrcode').style.display = 'none';
+        if(document.getElementsByClassName('ios')[0]){
+            document.getElementsByClassName('ios')[0].style.display = 'none';
+        }
+    }
+    else if (os.isPhone) {
+        document.getElementById('qrcode').style.display = 'none';
+        if(document.getElementsByClassName('android')[0]){
+            document.getElementsByClassName('android')[0].style.display = 'none';
+        }
+    }
+</script>
+
+
+</body></html>
